@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import Photo from './Photo';
-import AlbumContext from './AlbumContext';
-import CorkBoard from './corkboard.jpg';
-import { ReactComponent as BackArrow } from './backarrow.svg';
+import AlbumContext from '../AlbumContext';
+import CorkBoard from '../assets/corkboard.jpg';
+import { ReactComponent as BackArrow } from '../assets/backarrow.svg';
 
 const Board = styled.div`
     width: 100vw;
@@ -13,7 +13,6 @@ const Board = styled.div`
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    font-family: 'Permanent Marker', cursive;
 
     .back-arrow {
         padding: 1rem;

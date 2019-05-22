@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import desk from './desk.jpg';
+import Desk from '../assets/desk.jpg';
 
 const Container = styled.div`
-    font-family: 'Permanent Marker', cursive;
-    background-image: url(${desk});
+    background-image: url(${Desk});
     background-position: center;
     background-size: cover;
     height: 100vh;

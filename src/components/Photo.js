@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import AlbumContext from './AlbumContext';
-import { ReactComponent as Delete } from './delete.svg';
+import AlbumContext from '../AlbumContext';
+import { ReactComponent as Delete } from '../assets/delete.svg';
 
 const LargePolaroid = styled.div`
     position: relative;
@@ -9,7 +9,6 @@ const LargePolaroid = styled.div`
     height: 290px;
     padding: 10px 10px 0 10px;
     box-shadow: 0px 2px 15px #333;
-    font-family: 'Permanent Marker', cursive;
     background-color: #f4f4ef;
     border: 1px solid #fff;
 
@@ -35,10 +34,11 @@ const LargePolaroid = styled.div`
         text-transform: uppercase;
         font-size: 1.3rem;
         color: black;
+        cursor: pointer;
     }
 
     .note-input {
-        width: 250px;
+        width: 278px;
         background: none;
         border: none;
         border-bottom: 1px solid black;
@@ -75,14 +75,9 @@ const Photo = ({ photo }) => {
     const [newNote, setNewNote] = useState(note);
 
     return (
-        <LargePolaroid>
+        <LargePolaroid onClick={() => setEditing(true)}>
             <div className="photo-container">
-                <img
-                    className="large-photo"
-                    src={image}
-                    alt="Polaroid"
-                    onClick={() => setEditing(!editing)}
-                />
+                <img className="large-photo" src={image} alt="Polaroid" />
             </div>
             {editing ? (
                 <form

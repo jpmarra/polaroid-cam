@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
 import App from './App';
-import Album from './Album';
+import Album from './components/Album';
 import { AlbumProvider } from './AlbumContext';
 
 ReactDOM.render(

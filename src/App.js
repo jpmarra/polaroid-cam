@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './App.css';
-import Camera from './Camera';
-import Stack from './Stack';
-import Gate from './Gate';
-import desk from './desk.jpg';
+import Camera from './components/Camera';
+import Stack from './components/Stack';
+import Gate from './components/Gate';
+import Desk from './assets/desk.jpg';
 
 const Container = styled.div`
-    background-image: url(${desk});
+    background-image: url(${Desk});
     background-position: center;
     background-size: cover;
     height: 100vh;

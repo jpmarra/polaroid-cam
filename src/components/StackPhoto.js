@@ -13,7 +13,6 @@ const SmallPolaroid = styled.div`
         width: 280px;
     }
     .note {
-        font-family: 'Permanent Marker', cursive;
         font-size: 1.3rem;
         color: black;
         height: 40px;

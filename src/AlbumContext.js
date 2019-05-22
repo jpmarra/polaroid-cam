@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
 import uniqid from 'uniqid';
-import { useLocalStorage } from './useLocalStorage';
-import Rigs from './rigs.jpg';
-import Sad from './sadboy.jpg';
-import Doggo from './doggo.jpg';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import Rigs from './assets/rigs.jpg';
+import Sad from './assets/sadboy.jpg';
+import Doggo from './assets/doggo.jpg';
 
 const AlbumContext = createContext();
 
@@ -34,18 +34,20 @@ export const AlbumProvider = ({ children }) => {
 
     const addPhoto = _photo => {
         const imageId = uniqid('photo-');
-        const newAlbum = [
-            {
-                id: imageId,
-                image: _photo.toDataURL(),
-                note: '',
-                time: Date.now(),
-            },
-            ...photoAlbum,
-        ];
+        _photo.toBlob(blob => {
+            const newAlbum = [
+                {
+                    id: imageId,
+                    image: URL.createObjectURL(blob),
+                    note: '',
+                    time: Date.now(),
+                },
+                ...photoAlbum,
+            ];
 
-        newAlbum.sort((a, b) => (a.time > b.time ? -1 : 1));
-        setPhotoAlbum(newAlbum);
+            newAlbum.sort((a, b) => (a.time > b.time ? -1 : 1));
+            setPhotoAlbum(newAlbum);
+        });
     };
 
     const getPhotoInfoById = id => {
