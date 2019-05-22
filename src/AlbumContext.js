@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 import uniqid from 'uniqid';
 import { useLocalStorage } from './useLocalStorage';
-import Sleepy from './sleepyboy.jpg';
-import Golden from './goldboy.jpg';
+import Rigs from './rigs.jpg';
+import Sad from './sadboy.jpg';
 import Doggo from './doggo.jpg';
 
 const AlbumContext = createContext();
@@ -14,14 +14,14 @@ export const AlbumProvider = ({ children }) => {
     const [stockPhotos, setStockPhotos] = useState([
         {
             id: uniqid('stock-'),
-            image: Sleepy,
-            note: 'Sleepy boy',
+            image: Rigs,
+            note: 'My boy',
             time: Date.now(),
         },
         {
             id: uniqid('stock-'),
-            image: Golden,
-            note: 'Golden boy',
+            image: Sad,
+            note: 'Sad boy',
             time: Date.now() + 1,
         },
         {
@@ -48,23 +48,43 @@ export const AlbumProvider = ({ children }) => {
         setPhotoAlbum(newAlbum);
     };
 
-    const editPhoto = (id, newNote) => {
+    const getPhotoInfoById = id => {
         const album = id.includes('stock') ? stockPhotos : photoAlbum;
         const photo = album.find(photo => photo.id === id);
         const idx = album.indexOf(photo);
         const newAlbum = [...album];
+        return {
+            album,
+            photo,
+            idx,
+            newAlbum,
+        };
+    };
+
+    const editPhoto = (id, newNote) => {
+        const { album, photo, idx, newAlbum } = getPhotoInfoById(id);
         photo.note = newNote;
         newAlbum[idx] = photo;
         album === stockPhotos
             ? setStockPhotos([...newAlbum])
             : setPhotoAlbum([...newAlbum]);
     };
+
+    const deletePhoto = id => {
+        const { album, idx, newAlbum } = getPhotoInfoById(id);
+        newAlbum.splice(idx, 1);
+        album === stockPhotos
+            ? setStockPhotos([...newAlbum])
+            : setPhotoAlbum([...newAlbum]);
+    };
+
     return (
         <AlbumContext.Provider
             value={{
                 photoAlbum: [...photoAlbum, ...stockPhotos],
                 addPhoto,
                 editPhoto,
+                deletePhoto,
             }}
         >
             {children}

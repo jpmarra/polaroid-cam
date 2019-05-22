@@ -13,10 +13,21 @@ const Board = styled.div`
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    font-family: 'Permanent Marker', cursive;
 
     .back-arrow {
         padding: 1rem;
         width: 300px;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: center;
+    }
+    .add-note {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2rem;
     }
 `;
 const Photos = styled.ul`
@@ -60,6 +71,9 @@ const Album = () => {
             <Link to="/">
                 <BackArrow className="back-arrow" />
             </Link>
+            <div className="header-container">
+                <span className="add-note">Click a photo to add a note</span>
+            </div>
             <Photos>
                 {photoAlbum.map(photo => (
                     <li className="board-photo" key={photo.id}>

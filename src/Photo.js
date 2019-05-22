@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import AlbumContext from './AlbumContext';
+import { ReactComponent as Delete } from './delete.svg';
 
 const LargePolaroid = styled.div`
     position: relative;
@@ -55,10 +56,20 @@ const LargePolaroid = styled.div`
         text-transform: uppercase;
         font-weight: bold;
     }
+
+    .delete-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -10px;
+        margin-right: -10px;
+        width: 30px;
+        cursor: pointer;
+    }
 `;
 
 const Photo = ({ photo }) => {
-    const { editPhoto } = useContext(AlbumContext);
+    const { editPhoto, deletePhoto } = useContext(AlbumContext);
     const { id, image, note } = photo;
     const [editing, setEditing] = useState(false);
     const [newNote, setNewNote] = useState(note);
@@ -90,6 +101,9 @@ const Photo = ({ photo }) => {
                     <button className="save-button" type="submit">
                         Save
                     </button>
+                    <div role="button" onClick={() => deletePhoto(id)}>
+                        <Delete className="delete-button" />
+                    </div>
                 </form>
             ) : (
                 <div className="large-note">{newNote}</div>
