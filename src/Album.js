@@ -62,8 +62,8 @@ const Album = () => {
             </Link>
             <Photos>
                 {photoAlbum.map(photo => (
-                    <li className="board-photo">
-                        <Photo photo={photo} key={photo.id} />
+                    <li className="board-photo" key={photo.id}>
+                        <Photo photo={photo} />
                     </li>
                 ))}
             </Photos>
