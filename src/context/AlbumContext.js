@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
 import uniqid from 'uniqid';
-import { useLocalStorage } from './hooks/useLocalStorage';
-import Rigs from './assets/rigs.jpg';
-import Sad from './assets/sadboy.jpg';
-import Doggo from './assets/doggo.jpg';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import Rigs from '../assets/rigs.jpg';
+import Sad from '../assets/sadboy.jpg';
+import Doggo from '../assets/doggo.jpg';
 
 const AlbumContext = createContext();
 

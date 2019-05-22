@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
+import AlbumContext from '../context/AlbumContext';
 import StackPhoto from './StackPhoto';
-import AlbumContext from '../AlbumContext';
 import { ReactComponent as AlbumArrow } from '../assets/albumArrow.svg';
 
 const Collection = styled.ul`

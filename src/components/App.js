@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import './App.css';
-import Camera from './components/Camera';
-import Stack from './components/Stack';
-import Gate from './components/Gate';
-import Desk from './assets/desk.jpg';
-
-const Container = styled.div`
-    background-image: url(${Desk});
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const Inner = styled.div`
-    position: relative;
-    height: max-content;
-    width: 1024px;
-    margin-left: -350px;
-`;
+import '../App.css';
+import Camera from './Camera';
+import Gate from './Gate';
+import Stack from './Stack';
+import Desk from '../assets/desk.jpg';
 
 function App() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1150);
@@ -49,5 +31,23 @@ function App() {
         </Container>
     );
 }
+
+const Container = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(${Desk});
+    background-position: center;
+    background-size: cover;
+`;
+
+const Inner = styled.div`
+    position: relative;
+    width: 1024px;
+    height: max-content;
+    margin-left: -350px;
+`;
 
 export default App;

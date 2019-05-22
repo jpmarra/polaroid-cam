@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import { Link } from '@reach/router';
-import Photo from './Photo';
-import AlbumContext from '../AlbumContext';
+import styled from 'styled-components';
+import AlbumContext from '../context/AlbumContext';
 import CorkBoard from '../assets/corkboard.jpg';
+import Photo from './Photo';
 import { ReactComponent as BackArrow } from '../assets/backarrow.svg';
 
 const Album = () => {
@@ -36,8 +36,8 @@ const Board = styled.div`
     overflow: hidden;
 
     .back-arrow {
-        padding: 1rem;
         width: 300px;
+        padding: 1rem;
     }
 
     .header-container {

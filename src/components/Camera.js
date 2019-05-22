@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { navigate } from '@reach/router';
 import styled from 'styled-components';
-import AlbumContext from '../AlbumContext';
+import AlbumContext from '../context/AlbumContext';
 import PolaroidCam from '../assets/polaroidcam.png';
 import { ReactComponent as Arrow } from '../assets/arrow.svg';
 
@@ -75,6 +74,7 @@ const Cam = styled.div`
     background-size: cover;
     background-position: center;
     transform: scale(0.7);
+
     .video {
         height: 60%;
         margin-top: 50px;
@@ -82,13 +82,13 @@ const Cam = styled.div`
 
     .shutter-button {
         position: absolute;
+        width: 80px;
+        height: 30px;
         top: 61px;
         right: 75px;
         background-color: transparent;
         border: none;
         cursor: pointer;
-        width: 80px;
-        height: 30px;
     }
 
     .arrow {

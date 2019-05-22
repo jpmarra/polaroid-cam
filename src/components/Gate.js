@@ -11,14 +11,14 @@ const Gate = () => {
 };
 
 const Container = styled.div`
-    background-image: url(${Desk});
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(${Desk});
+    background-position: center;
+    background-size: cover;
 `;
 
 export default Gate;

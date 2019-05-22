@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const StackPhoto = ({ image, note }) => (
+    <SmallPolaroid>
+        <img className="image" src={image} alt="Stack" />
+        <div className="note">
+            <span>{note}</span>
+        </div>
+    </SmallPolaroid>
+);
+
 const SmallPolaroid = styled.div`
     background-color: #f4f4ef;
     border: 1px solid #fff;
@@ -22,13 +31,5 @@ const SmallPolaroid = styled.div`
         text-transform: uppercase;
     }
 `;
-const StackPhoto = ({ image, note }) => (
-    <SmallPolaroid>
-        <img className="image" src={image} alt="Stack" />
-        <div className="note">
-            <span>{note}</span>
-        </div>
-    </SmallPolaroid>
-);
 
 export default StackPhoto;

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
-import App from './App';
+import App from './components/App';
 import Album from './components/Album';
-import { AlbumProvider } from './AlbumContext';
+import { AlbumProvider } from './context/AlbumContext';
 
 ReactDOM.render(
     <AlbumProvider>

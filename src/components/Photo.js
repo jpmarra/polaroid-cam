@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import AlbumContext from '../AlbumContext';
+import AlbumContext from '../context/AlbumContext';
 import { ReactComponent as Delete } from '../assets/delete.svg';
 
 const Photo = ({ photo }) => {
-    const { editPhoto, deletePhoto } = useContext(AlbumContext);
     const { id, image, note } = photo;
+    const { editPhoto, deletePhoto } = useContext(AlbumContext);
     const [editing, setEditing] = useState(false);
     const [newNote, setNewNote] = useState(note);
 
