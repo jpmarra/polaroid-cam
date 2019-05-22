@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import './App.css';
+import Camera from './Camera';
+import Stack from './Stack';
+import Gate from './Gate';
+import desk from './desk.jpg';
+
+const Container = styled.div`
+    background-image: url(${desk});
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Inner = styled.div`
+    position: relative;
+    height: max-content;
+    width: 1024px;
+    margin-left: -350px;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1150);
+
+    useEffect(() => {
+        window.addEventListener('resize', updateDimensions);
+        return () => window.removeEventListener('resize', updateDimensions);
+    });
+
+    const updateDimensions = () => {
+        window.innerWidth < 1150 ? setIsMobile(true) : setIsMobile(false);
+    };
+
+    if (isMobile) {
+        return <Gate />;
+    }
+
+    return (
+        <Container>
+            <Inner>
+                <Camera />
+                <Stack />
+            </Inner>
+        </Container>
+    );
 }
 
 export default App;
