@@ -34,20 +34,18 @@ export const AlbumProvider = ({ children }) => {
 
     const addPhoto = _photo => {
         const imageId = uniqid('photo-');
-        _photo.toBlob(blob => {
-            const newAlbum = [
-                {
-                    id: imageId,
-                    image: URL.createObjectURL(blob),
-                    note: '',
-                    time: Date.now(),
-                },
-                ...photoAlbum,
-            ];
+        const newAlbum = [
+            {
+                id: imageId,
+                image: _photo.toDataURL('image/jpeg', 0.5),
+                note: '',
+                time: Date.now(),
+            },
+            ...photoAlbum,
+        ];
 
-            newAlbum.sort((a, b) => (a.time > b.time ? -1 : 1));
-            setPhotoAlbum(newAlbum);
-        });
+        newAlbum.sort((a, b) => (a.time > b.time ? -1 : 1));
+        setPhotoAlbum(newAlbum);
     };
 
     const getPhotoInfoById = id => {

@@ -2,6 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Desk from '../assets/desk.jpg';
 
+const Gate = () => {
+    return (
+        <Container>
+            <h1>Please view on Desktop for the best experience</h1>
+        </Container>
+    );
+};
+
 const Container = styled.div`
     background-image: url(${Desk});
     background-position: center;
@@ -12,12 +20,5 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
 `;
-const Gate = () => {
-    return (
-        <Container>
-            <h1>Please view on Desktop for the best experience</h1>
-        </Container>
-    );
-};
 
 export default Gate;

@@ -6,6 +6,27 @@ import AlbumContext from '../AlbumContext';
 import CorkBoard from '../assets/corkboard.jpg';
 import { ReactComponent as BackArrow } from '../assets/backarrow.svg';
 
+const Album = () => {
+    const { photoAlbum } = useContext(AlbumContext);
+    return (
+        <Board>
+            <Link to="/">
+                <BackArrow className="back-arrow" />
+            </Link>
+            <div className="header-container">
+                <span className="add-note">Click a photo to add a note</span>
+            </div>
+            <Photos>
+                {photoAlbum.map(photo => (
+                    <li className="board-photo" key={photo.id}>
+                        <Photo photo={photo} />
+                    </li>
+                ))}
+            </Photos>
+        </Board>
+    );
+};
+
 const Board = styled.div`
     width: 100vw;
     min-height: 100vh;
@@ -63,25 +84,5 @@ const Photos = styled.ul`
         }
     }
 `;
-const Album = () => {
-    const { photoAlbum } = useContext(AlbumContext);
-    return (
-        <Board>
-            <Link to="/">
-                <BackArrow className="back-arrow" />
-            </Link>
-            <div className="header-container">
-                <span className="add-note">Click a photo to add a note</span>
-            </div>
-            <Photos>
-                {photoAlbum.map(photo => (
-                    <li className="board-photo" key={photo.id}>
-                        <Photo photo={photo} />
-                    </li>
-                ))}
-            </Photos>
-        </Board>
-    );
-};
 
 export default Album;

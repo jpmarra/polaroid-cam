@@ -3,6 +3,45 @@ import styled from 'styled-components';
 import AlbumContext from '../AlbumContext';
 import { ReactComponent as Delete } from '../assets/delete.svg';
 
+const Photo = ({ photo }) => {
+    const { editPhoto, deletePhoto } = useContext(AlbumContext);
+    const { id, image, note } = photo;
+    const [editing, setEditing] = useState(false);
+    const [newNote, setNewNote] = useState(note);
+
+    return (
+        <LargePolaroid onClick={() => setEditing(true)}>
+            <div className="photo-container">
+                <img className="large-photo" src={image} alt="Polaroid" />
+            </div>
+            {editing ? (
+                <form
+                    onSubmit={e => {
+                        e.preventDefault();
+                        editPhoto(id, newNote);
+                        setEditing(false);
+                    }}
+                >
+                    <input
+                        className="note-input"
+                        value={newNote}
+                        maxlength="26"
+                        onChange={e => setNewNote(e.target.value)}
+                    />
+                    <button className="save-button" type="submit">
+                        Save
+                    </button>
+                    <div role="button" onClick={() => deletePhoto(id)}>
+                        <Delete className="delete-button" />
+                    </div>
+                </form>
+            ) : (
+                <div className="large-note">{newNote}</div>
+            )}
+        </LargePolaroid>
+    );
+};
+
 const LargePolaroid = styled.div`
     position: relative;
     width: 320px;
@@ -67,44 +106,5 @@ const LargePolaroid = styled.div`
         cursor: pointer;
     }
 `;
-
-const Photo = ({ photo }) => {
-    const { editPhoto, deletePhoto } = useContext(AlbumContext);
-    const { id, image, note } = photo;
-    const [editing, setEditing] = useState(false);
-    const [newNote, setNewNote] = useState(note);
-
-    return (
-        <LargePolaroid onClick={() => setEditing(true)}>
-            <div className="photo-container">
-                <img className="large-photo" src={image} alt="Polaroid" />
-            </div>
-            {editing ? (
-                <form
-                    onSubmit={e => {
-                        e.preventDefault();
-                        editPhoto(id, newNote);
-                        setEditing(false);
-                    }}
-                >
-                    <input
-                        className="note-input"
-                        value={newNote}
-                        maxlength="26"
-                        onChange={e => setNewNote(e.target.value)}
-                    />
-                    <button className="save-button" type="submit">
-                        Save
-                    </button>
-                    <div role="button" onClick={() => deletePhoto(id)}>
-                        <Delete className="delete-button" />
-                    </div>
-                </form>
-            ) : (
-                <div className="large-note">{newNote}</div>
-            )}
-        </LargePolaroid>
-    );
-};
 
 export default Photo;

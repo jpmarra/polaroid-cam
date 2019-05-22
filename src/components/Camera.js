@@ -76,10 +76,8 @@ const Cam = styled.div`
     background-position: center;
     transform: scale(0.7);
     .video {
-        height: 56%;
-        margin-top: 75px;
-        border-left: 40px solid #1a1a1a;
-        border-right: 41px solid #1a1a1a;
+        height: 60%;
+        margin-top: 50px;
     }
 
     .shutter-button {
@@ -111,7 +109,6 @@ const Message = styled.div`
     cursor: pointer;
     font-size: 1.7rem;
     color: #f4f4ef;
-    background-color: #1a1a1a;
 `;
 
 export default Camera;
